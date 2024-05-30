@@ -1,8 +1,10 @@
 package com.ykeshtdar.safetyNet.dto;
 
+import org.springframework.stereotype.*;
+
 import java.util.*;
 
-
+@Component
 //this url corresponding to "http://localhost:8080/flood/stations?stations=<a list of station_numbers>"
 public class AdresseParCaserne {
     private String firstName;

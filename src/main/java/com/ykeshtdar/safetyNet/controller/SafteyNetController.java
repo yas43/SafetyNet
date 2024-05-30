@@ -49,4 +49,12 @@ public class SafteyNetController {
         return new ResponseEntity<>(safetynetService.personaddress(address),HttpStatus.OK);
 
     }
+
+
+
+    @GetMapping("flood/{listOfStation}")
+    public ResponseEntity<List< Map<String,List<AdresseParCaserne>>>> flood(@PathVariable("listOfStation") List<Integer> list) throws IOException {
+        return new ResponseEntity<>( safetynetService.addresseesForFireStation(list),HttpStatus.OK);
+
+    }
 }

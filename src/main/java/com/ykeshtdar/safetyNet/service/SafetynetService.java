@@ -224,6 +224,54 @@ public class SafetynetService {
 
 
 
+
+
+
+
+
+
+    public List< Map<String, List<AdresseParCaserne>>> addresseesForFireStation(List<Integer> firestationnumberlist) throws IOException {
+        List<Map<String,List<AdresseParCaserne>>> StationAddressList = new LinkedList<>();
+        for (Integer firestationnumber:firestationnumberlist) {
+            String firestationnumberstring = String.valueOf(firestationnumber);
+            List<AdresseParCaserne> adresseParCaserneList = new LinkedList<>();
+            Map<String, List<AdresseParCaserne>> map = new HashMap<>();
+            for (int i = 0; i < getJsonNode.getFireStationNode().size(); i++) {
+                if (getJsonNode.getFireStationNode().path(i).path("station").asText().equals(firestationnumberstring)) {
+                    for (int j = 0; j < getJsonNode.getPersonNode().size(); j++) {
+                        if (getJsonNode.getPersonNode().path(j).path("address").equals(getJsonNode.getFireStationNode().path(i).path("address"))) {
+                            for (int k = 0; k < getJsonNode.getMedicalRecordsNode().size(); k++) {
+                                AdresseParCaserne adresseParCaserne = new AdresseParCaserne();
+                                List<String> medicalbackgroundlist = new LinkedList<>();
+                                if (getJsonNode.getPersonNode().path(j).path("firstName").equals(getJsonNode.getMedicalRecordsNode().path(k).path("firstName"))) {
+                                    adresseParCaserne.setFirstName(getJsonNode.getPersonNode().path(j).path("firstName").toString());
+                                    adresseParCaserne.setPhone(getJsonNode.getPersonNode().path(j).path("phone").toString());
+                                    medicalbackgroundlist.add(getJsonNode.getMedicalRecordsNode().path(k).path("allergies").toString());
+                                    medicalbackgroundlist.add(getJsonNode.getMedicalRecordsNode().path(k).path("medications").toString());
+                                    adresseParCaserne.setMedicalbackgroundlist(medicalbackgroundlist);
+                                    adresseParCaserne.setAge(age(getJsonNode.getMedicalRecordsNode().path(k)));
+                                    adresseParCaserneList.add(adresseParCaserne);
+                                    map.put(getJsonNode.getFireStationNode().path(i).path("station").toString(), adresseParCaserneList);
+
+
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            StationAddressList.add(map);
+        }
+        return StationAddressList;
+    }
+
+
+
+
+
 }
 
 

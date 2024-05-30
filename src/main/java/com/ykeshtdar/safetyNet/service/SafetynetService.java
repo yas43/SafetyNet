@@ -170,4 +170,28 @@ public class SafetynetService {
     }
 
 
+
+
+
+
+
+//    JsonReaderFile jsonReaderFile = new JsonReaderFile();
+    Set<NumerosTelephoneParCaserne> numerosTelephoneParCaserneList = new HashSet<>();
+
+    public Set<NumerosTelephoneParCaserne> phoneNumbers(int firesationnumber) throws IOException {
+        String firestationstring = String.valueOf(firesationnumber);
+        for (int i = 0; i < getJsonNode.getFireStationNode().size(); i++) {
+            if (getJsonNode.getFireStationNode().path(i).path("station").asText().equals(firestationstring)) {
+                for (int j = 0; j < getJsonNode.getPersonNode().size(); j++) {
+                    NumerosTelephoneParCaserne numerosTelephoneParCaserne = new NumerosTelephoneParCaserne();
+                    if (getJsonNode.getPersonNode().path(j).path("address").equals(getJsonNode.getFireStationNode().path(i).path("address"))) {
+                        numerosTelephoneParCaserne.setPhoneNumber(getJsonNode.getPersonNode().path(j).path("phone").asText());
+                        numerosTelephoneParCaserneList.add(numerosTelephoneParCaserne);
+                    }
+                }
+            }
+        }
+        return numerosTelephoneParCaserneList;
+    }
+
 }

@@ -1,7 +1,10 @@
 package com.ykeshtdar.safetyNet.dto;
 
-// this class corresponding to "http://localhost:8080/phoneAlert?firestation=<firestation_number>"
 
+import org.springframework.stereotype.*;
+
+import java.util.*;
+@Component
 public class NumerosTelephoneParCaserne {
 
     private String phoneNumber;
@@ -12,6 +15,19 @@ public class NumerosTelephoneParCaserne {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NumerosTelephoneParCaserne that = (NumerosTelephoneParCaserne) o;
+        return Objects.equals(phoneNumber, that.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(phoneNumber);
     }
 
     @Override

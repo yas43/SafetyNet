@@ -32,4 +32,12 @@ public class SafteyNetController {
         return new ResponseEntity<>( safetynetService.childForEachAddress(address),HttpStatus.OK);
 
     }
+
+
+    @GetMapping("phoneAlert/{firestation_number}")
+
+    public ResponseEntity<Set<NumerosTelephoneParCaserne>> phoneAlert(@PathVariable("firestation_number") int firestation_number) throws IOException {
+        return new ResponseEntity<>( safetynetService.phoneNumbers(firestation_number),HttpStatus.OK);
+
+    }
 }

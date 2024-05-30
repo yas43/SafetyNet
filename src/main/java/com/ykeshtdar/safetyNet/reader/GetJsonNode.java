@@ -9,7 +9,7 @@ import java.io.*;
 public class GetJsonNode {
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public  static JsonNode getPersonNode() throws IOException {
+    public   JsonNode getPersonNode() throws IOException {
         InputStream Input =
                 GetJsonNode.class.getClassLoader()
                         .getResourceAsStream("data.json");
@@ -19,7 +19,7 @@ public class GetJsonNode {
 
     }
 
-    public static JsonNode getFireStationNode() throws IOException {
+    public  JsonNode getFireStationNode() throws IOException {
         InputStream Input =
                 GetJsonNode.class.getClassLoader()
                         .getResourceAsStream("data.json");
@@ -29,7 +29,7 @@ public class GetJsonNode {
 
     }
 
-    public static JsonNode getMedicalRecordsNode() throws IOException {
+    public  JsonNode getMedicalRecordsNode() throws IOException {
         InputStream Input =
                 GetJsonNode.class.getClassLoader()
                         .getResourceAsStream("data.json");

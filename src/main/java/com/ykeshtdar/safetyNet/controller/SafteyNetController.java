@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("firestation")
 public class SafteyNetController {
 
     private final SafetynetService safetynetService;
@@ -18,8 +18,8 @@ public class SafteyNetController {
         this.safetynetService = safetynetService;
     }
 
-    @GetMapping("/firestation/{station_number}")
+    @GetMapping("/{station_number}")
     public ResponseEntity<List<PersonnesCouvertesParCaserne>> personCovered(@PathVariable("station_number") int station_number) throws IOException {
-        return new ResponseEntity<>(safetynetService.coveredPersonsByFireStation(station_number),HttpStatus.OK);
+        return new ResponseEntity<>(safetynetService.coveredPersonsRepo(station_number),HttpStatus.OK);
     }
 }

@@ -1,26 +1,51 @@
 package com.ykeshtdar.safetyNet.dto;
+import org.springframework.stereotype.*;
 
-
-import com.fasterxml.jackson.databind.*;
-import com.ykeshtdar.safetyNet.reader.*;
-
-
-import java.io.*;
-import java.time.*;
-import java.time.format.*;
-import java.util.*;
 
 // this class corresponding to "http://localhost:8080/firestation?stationNumber=<station_number>"
-
+@Component
 public class PersonnesCouvertesParCaserne {
+
     private String firstName;
     private String lastName;
     private String adresse;
     private String phone;
     private boolean isAdults;
     private boolean isKids;
-    private String numberOfAdults;
-    private String numberOfKids;
+    private int totalNumberOfAdults;
+    private int totalNumberOfKids;
+
+    @Override
+    public String toString() {
+        return "PersonnesCouvertesParCaserne{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", phone='" + phone + '\'' +
+                ", isAdults=" + isAdults +
+                ", isKids=" + isKids +
+                ", totalNumberOfAdults=" + totalNumberOfAdults +
+                ", totalNumberOfKids=" + totalNumberOfKids +
+                '}';
+    }
+
+
+
+    public int getTotalNumberOfAdults() {
+        return totalNumberOfAdults;
+    }
+
+    public int getTotalNumberOfKids() {
+        return totalNumberOfKids;
+    }
+
+    public void setTotalNumberOfAdults(int totalNumberOfAdults) {
+        this.totalNumberOfAdults = totalNumberOfAdults;
+    }
+
+    public void setTotalNumberOfKids(int totalNumberOfKids) {
+        this.totalNumberOfKids = totalNumberOfKids;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -44,14 +69,6 @@ public class PersonnesCouvertesParCaserne {
 
     public boolean isKids() {
         return isKids;
-    }
-
-    public String getNumberOfAdults() {
-        return numberOfAdults;
-    }
-
-    public String getNumberOfKids() {
-        return numberOfKids;
     }
 
     public void setFirstName(String firstName) {
@@ -78,68 +95,5 @@ public class PersonnesCouvertesParCaserne {
         isKids = kids;
     }
 
-    public void setNumberOfAdults(String numberOfAdults) {
-        this.numberOfAdults = numberOfAdults;
-    }
 
-    public void setNumberOfKids(String numberOfKids) {
-        this.numberOfKids = numberOfKids;
-    }
-
-    public boolean isAdults(JsonNode person) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("\"MM/dd/yyyy\"", Locale.ENGLISH);
-        LocalDate currentDate = LocalDate.now();
-        LocalDate personBirthdate = LocalDate.parse(person.path("birthdate").toString(), formatter);
-        int age = Period.between(personBirthdate, currentDate).getYears();
-        return age > 18;
-
-    }
-
-    public boolean isKids(JsonNode person) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("\"MM/dd/yyyy\"", Locale.ENGLISH);
-        LocalDate currentDate = LocalDate.now();
-        LocalDate personBirthdate = LocalDate.parse(person.path("birthdate").toString(), formatter);
-        int age = Period.between(personBirthdate, currentDate).getYears();
-        return age < 18;
-
-    }
-
-    public void numberOfAdults() throws IOException {
-//        JsonReaderFile jsonReaderFile = new JsonReaderFile();
-        PersonnesCouvertesParCaserne personnesCouvertesParCaserne = new PersonnesCouvertesParCaserne();
-        int counter = 0;
-        for (JsonNode medicalrecord : GetJsonNode.getMedicalRecordsNode()) {
-            if (personnesCouvertesParCaserne.isAdults(medicalrecord)) {
-                counter++;
-
-            }
-
-        }
-
-
-//        setNumberOfAdults("number of Adult is " + counter);
-    }
-
-
-    public void numberOfKids() throws IOException {
-//        JsonReaderFile jsonReaderFile = new JsonReaderFile();
-        PersonnesCouvertesParCaserne personnesCouvertesParCaserne = new PersonnesCouvertesParCaserne();
-        int counter = 0;
-        for (JsonNode medicalrecord : GetJsonNode.getMedicalRecordsNode()) {
-            if (personnesCouvertesParCaserne.isKids(medicalrecord)) {
-                counter++;
-
-            }
-
-        }
-
-
-//        setNumberOfKids("number of kids is " + counter);
-    }
-
-
-    @Override
-    public String toString() {
-        return "PersonnesCouvertesParCaserne{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", adresse='" + adresse + '\'' + ", phone='" + phone + '\'' + ", numberOfAdults='" + numberOfAdults + '\'' + ", numberOfKids='" + numberOfKids + '\'' + '}';
-    }
 }

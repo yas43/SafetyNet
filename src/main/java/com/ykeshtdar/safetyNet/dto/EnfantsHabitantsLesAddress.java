@@ -3,11 +3,12 @@ package com.ykeshtdar.safetyNet.dto;
 
 
 import com.ykeshtdar.safetyNet.model.*;
+import org.springframework.stereotype.*;
 
 import java.util.*;
 
 // this class corresponding to "http://localhost:8080/childAlert?address=<address>"
-
+@Component
 public class EnfantsHabitantsLesAddress {
     private String name;
     private String familyName;

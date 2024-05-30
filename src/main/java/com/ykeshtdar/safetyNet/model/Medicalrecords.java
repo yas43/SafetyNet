@@ -1,5 +1,8 @@
 package com.ykeshtdar.safetyNet.model;
 
+import org.springframework.stereotype.*;
+
+@Component
 public class Medicalrecords {
     private String firstName;
     private String lastName;

@@ -3,8 +3,6 @@ import com.ykeshtdar.safetyNet.model.*;
 import com.ykeshtdar.safetyNet.repository.Repository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
-
-
 import java.io.*;
 import java.util.*;
 

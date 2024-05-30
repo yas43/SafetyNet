@@ -57,4 +57,12 @@ public class SafteyNetController {
         return new ResponseEntity<>( safetynetService.addresseesForFireStation(list),HttpStatus.OK);
 
     }
+
+
+
+    @GetMapping("/personInfo")
+    public ResponseEntity<List<PersonInfo>> personInfo(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) throws IOException {
+        return new ResponseEntity<>( safetynetService.personInfo(firstName,lastName),HttpStatus.OK);
+
+    }
 }

@@ -1,9 +1,10 @@
 package com.ykeshtdar.safetyNet.dto;
 
+import org.springframework.stereotype.*;
+
 import java.util.*;
 
-
-//this url corresponding to "http://localhost:8080/personInfo?firstName=<firstName>&lastName=<lastName>"
+@Component
 public class PersonInfo {
     private String firstName;
     private String address;

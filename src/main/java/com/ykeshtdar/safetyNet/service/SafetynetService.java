@@ -272,6 +272,43 @@ public class SafetynetService {
 
 
 
+
+
+
+
+
+
+    public List<PersonInfo> personInfo(String firstName, String lastName) throws IOException {
+        List<PersonInfo> personInfoList = new LinkedList<>();
+        for (int i = 0; i < getJsonNode.getPersonNode().size(); i++) {
+            if (getJsonNode.getPersonNode().path(i).path("firstName").asText().equals(firstName)
+                    && getJsonNode.getPersonNode().path(i).path("lastName").asText().equals(lastName)) {
+                for (int j = 0; j < getJsonNode.getMedicalRecordsNode().size(); j++) {
+                    PersonInfo personInfo = new PersonInfo();
+                    List<String> medicationhistorylist = new LinkedList<>();
+                    if (getJsonNode.getMedicalRecordsNode().path(j).path("firstName").equals(getJsonNode.getPersonNode().path(i).path("firstName"))
+                            && getJsonNode.getMedicalRecordsNode().path(j).path("lastName").equals(getJsonNode.getMedicalRecordsNode().path(i).path("lastName"))) {
+                        personInfo.setFirstName(getJsonNode.getPersonNode().path(i).path("firstName").toString());
+                        personInfo.setAddress(getJsonNode.getPersonNode().path(i).path("address").toString());
+                        personInfo.setEmail(getJsonNode.getPersonNode().path(i).path("email").toString());
+                        medicationhistorylist.add(getJsonNode.getMedicalRecordsNode().path(j).path("medications").toString());
+                        medicationhistorylist.add(getJsonNode.getMedicalRecordsNode().path(j).path("allergies").toString());
+                        personInfo.setMedicationhistory(medicationhistorylist);
+                        personInfo.setAge(age(getJsonNode.getMedicalRecordsNode().path(j)));
+                        personInfoList.add(personInfo);
+
+                    }
+                }
+            }
+        }
+        return personInfoList;
+    }
+
+
+
+
+
+
 }
 
 

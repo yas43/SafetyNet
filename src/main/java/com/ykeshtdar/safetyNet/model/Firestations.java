@@ -23,6 +23,14 @@ public class Firestations {
         this.station = station;
     }
 
+    public Firestations(String address, String station) {
+        this.address = address;
+        this.station = station;
+    }
+
+    public Firestations() {
+    }
+
     @Override
     public String toString() {
         return "Models.Firestations{" +

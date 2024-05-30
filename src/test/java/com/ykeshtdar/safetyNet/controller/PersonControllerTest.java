@@ -68,17 +68,7 @@ public class PersonControllerTest {
         personList = Arrays.asList(john, jacob, tenley);
     }
 
-//    @Test
-//    public void getAllPersonsShouldReturnListOfPersons() throws Exception{
-//        when(personService.getPersons()).thenReturn(personList);
-//        mvc.perform(get("/person/all"))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", hasSize(3)))
-//                .andExpect(jsonPath("$[0].firstName", is("John")))
-//                .andExpect(jsonPath("$[1].firstName", is("Jacob")))
-//                .andExpect(jsonPath("$[2].firstName", is("Tenley")));
-//    }
+
 
     @Test
     public void addPersonShouldReturnList() throws Exception {
@@ -90,15 +80,7 @@ public class PersonControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void addPersonWhoAlreadyExistsShouldNotReturnPerson() throws Exception {
-//        when(personService.addPerson(john)).thenReturn(null);
-//        mvc.perform(post("/person")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(jsonUtils.asJsonString(john)))
-//                .andDo(print())
-//                .andExpect(status().isNoContent());
-//    }
+
 
     @Test
     public void updatePersonShouldReturnList() throws Exception {
@@ -110,15 +92,7 @@ public class PersonControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void updatePersonWhoDoesNotExistShouldNotReturnPerson() throws Exception {
-//        when(personService.updatePerson(john)).thenReturn(null);
-//        mvc.perform(put("/person")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(jsonUtils.asJsonString(john)))
-//                .andDo(print())
-//                .andExpect(status().isNoContent());
-//    }
+
 
     @Test
     public void deletePersonShouldReturnList() throws Exception {
@@ -130,14 +104,6 @@ public class PersonControllerTest {
 
     }
 
-//    @Test
-//    public void deletePersonWhoDoesNotExistsShouldReturnNoContent() throws Exception {
-//        when(personService.deletePerson(john.getFirstName(), john.getLastName())).thenReturn(null);
-//        mvc.perform(delete("/person")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(jsonUtils.asJsonString(john)))
-//                .andDo(print())
-//                .andExpect(status().isNoContent());
-//    }
+
 
 }

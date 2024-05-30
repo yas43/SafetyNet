@@ -15,20 +15,11 @@ public class FirestationController {
     public FirestationController(FirestationService firestationService) {
         this.firestationService = firestationService;
     }
-//    private final PostFireStation postFireStation;
-//    private final UpdateFireStation updateFireStation;
-//    private final DeletFireStation deletFireStation;
-//
-//    public FireStationController(PostFireStation postFireStation, UpdateFireStation updateFireStation, DeletFireStation deletFireStation) {
-//        this.postFireStation = postFireStation;
-//        this.updateFireStation = updateFireStation;
-//        this.deletFireStation = deletFireStation;
-//    }
+
 
 
     @PostMapping
     public ResponseEntity<List<Firestations>> addFireStation(@RequestBody Firestations firestations) throws IOException {
-//        PostFireStation postFireStation = new PostFireStation();
         return new ResponseEntity<>( firestationService.addFireStation(firestations),HttpStatus.OK);
 
     }

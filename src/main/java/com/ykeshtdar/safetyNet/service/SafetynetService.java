@@ -309,6 +309,22 @@ public class SafetynetService {
 
 
 
+
+
+    Set<CommunityEmail> communityEmailList = new HashSet<>();
+    public Set<CommunityEmail> communityEmail(String city) throws IOException {
+        for (int i=0;i<getJsonNode.getPersonNode().size();i++){
+            CommunityEmail communityEmail = new CommunityEmail();
+            if (getJsonNode.getPersonNode().path(i).path("city").asText().equalsIgnoreCase(city)){
+                communityEmail.setEmail(getJsonNode.getPersonNode().path(i).path("email").toString());
+                communityEmailList.add(communityEmail);
+            }
+        }
+        return communityEmailList;
+    }
+
+
+
 }
 
 

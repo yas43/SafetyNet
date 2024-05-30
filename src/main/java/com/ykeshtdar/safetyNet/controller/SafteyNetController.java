@@ -65,4 +65,12 @@ public class SafteyNetController {
         return new ResponseEntity<>( safetynetService.personInfo(firstName,lastName),HttpStatus.OK);
 
     }
+
+
+    @GetMapping("communityEmail/{city}")
+    @ResponseBody
+    public ResponseEntity<Set<CommunityEmail>> communityEmail(@PathVariable("city") String city) throws IOException {
+        return new ResponseEntity<>(safetynetService.communityEmail(city),HttpStatus.OK);
+
+    }
 }

@@ -1,7 +1,10 @@
 package com.ykeshtdar.safetyNet.dto;
 
-//this class corresponding to "http://localhost:8080/communityEmail?city=<city>"
 
+import org.springframework.stereotype.*;
+
+import java.util.*;
+@Component
 public class CommunityEmail {
     private String email;
 
@@ -14,9 +17,23 @@ public class CommunityEmail {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CommunityEmail that = (CommunityEmail) o;
+        return Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
+
+    @Override
     public String toString() {
         return "CommunityEmail{" +
                 "email='" + email + '\'' +
                 '}';
     }
+
 }

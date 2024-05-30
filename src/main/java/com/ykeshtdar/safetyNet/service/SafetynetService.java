@@ -14,8 +14,9 @@ import java.util.*;
 
 @Service
 public class SafetynetService {
-@Autowired
+    @Autowired
     GetJsonNode getJsonNode;
+
     public List<PersonnesCouvertesParCaserne> coveredPersonsRepo(int stationnumber) throws IOException {
         int totalNumberOfAdults = 0;
         int totalNumberOfKids = 0;
@@ -30,7 +31,7 @@ public class SafetynetService {
             if (fireStations.path(i).path("station").asText().equals(firestationnumberstring)) {
                 for (int j = 0; j < persons.size(); j++) {
                     if (persons.path(j).path("address").equals(fireStations.path(i).path("address"))) {
-                        for (int k=0;k<medicalrecords.size();k++) {
+                        for (int k = 0; k < medicalrecords.size(); k++) {
                             PersonnesCouvertesParCaserne personnesCouvertesParCaserne = new PersonnesCouvertesParCaserne();
 
                             if (medicalrecords.path(k).path("firstName").equals(persons.path(j).path("firstName"))) {
@@ -40,11 +41,11 @@ public class SafetynetService {
                                 personnesCouvertesParCaserne.setAdresse(persons.path(j).path("address").toString());
                                 personnesCouvertesParCaserne.setPhone(persons.path(j).path("phone").toString());
                                 if (isAnAdultPerson(medicalrecords.path(k))) {
-                                    totalNumberOfAdults+=1;
+                                    totalNumberOfAdults += 1;
                                     personnesCouvertesParCaserne.setAdults(true);
 
                                 } else {
-                                    totalNumberOfKids+=1;
+                                    totalNumberOfKids += 1;
                                     personnesCouvertesParCaserne.setKids(true);
 
                                 }
@@ -60,7 +61,7 @@ public class SafetynetService {
                 }
             }
         }
-        for (PersonnesCouvertesParCaserne personnesCouvertesParCaserne:couvertesParCasernes){
+        for (PersonnesCouvertesParCaserne personnesCouvertesParCaserne : couvertesParCasernes) {
 
             personnesCouvertesParCaserne.setTotalNumberOfAdults(totalNumberOfAdults);
             personnesCouvertesParCaserne.setTotalNumberOfKids(totalNumberOfKids);
@@ -79,16 +80,8 @@ public class SafetynetService {
     }
 
 
-
-
-
-
-
-
-
     List<EnfantsHabitantsLesAddress> enfantsHabitantsLesAddressList = new LinkedList<>();
     List<Person> personList = new LinkedList<>();
-
 
 
     public List<EnfantsHabitantsLesAddress> childForEachAddress(String address) throws IOException {
@@ -170,12 +163,6 @@ public class SafetynetService {
     }
 
 
-
-
-
-
-
-//    JsonReaderFile jsonReaderFile = new JsonReaderFile();
     Set<NumerosTelephoneParCaserne> numerosTelephoneParCaserneList = new HashSet<>();
 
     public Set<NumerosTelephoneParCaserne> phoneNumbers(int firesationnumber) throws IOException {
@@ -194,4 +181,49 @@ public class SafetynetService {
         return numerosTelephoneParCaserneList;
     }
 
+
+
+
+
+
+
+
+    public Map<String, List<HabitantsParAdresse>> personaddress(String address) throws IOException {
+        Map<String, List<HabitantsParAdresse>> map = new HashMap<>();
+        List<HabitantsParAdresse> coveredpersonslist = new LinkedList<>();
+
+        for (int i = 0; i < getJsonNode.getFireStationNode().size(); i++) {
+            if (getJsonNode.getFireStationNode().path(i).path("address").asText().equals(address)) {
+                for (int j = 0; j < getJsonNode.getPersonNode().size(); j++) {
+                    if (getJsonNode.getFireStationNode().path(i).path("address").equals(getJsonNode.getPersonNode().path(j).path("address"))) {
+                        for (int k = 0; k < getJsonNode.getMedicalRecordsNode().size(); k++) {
+                            HabitantsParAdresse habitantsParAdresse = new HabitantsParAdresse();
+                            List<String> medicationlist = new LinkedList<>();
+                            if (getJsonNode.getMedicalRecordsNode().path(k).path("firstName").equals(getJsonNode.getPersonNode().path(j).path("firstName"))) {
+                                habitantsParAdresse.setFirsName(getJsonNode.getPersonNode().path(j).path("firstName").toString());
+                                habitantsParAdresse.setPhone(getJsonNode.getPersonNode().path(j).path("phone").toString());
+                                habitantsParAdresse.setAge(age(getJsonNode.getMedicalRecordsNode().path(k)));
+                                medicationlist.add(getJsonNode.getMedicalRecordsNode().path(k).path("medications").toString());
+                                habitantsParAdresse.setMedication(medicationlist);
+                                coveredpersonslist.add(habitantsParAdresse);
+
+                                map.put(getJsonNode.getFireStationNode().path(i).path("station").toString(),coveredpersonslist);
+
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        }
+
+        return map;
+    }
+
+
+
 }
+
+

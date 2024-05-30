@@ -40,4 +40,13 @@ public class SafteyNetController {
         return new ResponseEntity<>( safetynetService.phoneNumbers(firestation_number),HttpStatus.OK);
 
     }
+
+
+
+    @GetMapping("fire/{address}")
+    @ResponseBody
+    public ResponseEntity<Map<String,List<HabitantsParAdresse>>> fire(@PathVariable("address") String address) throws IOException {
+        return new ResponseEntity<>(safetynetService.personaddress(address),HttpStatus.OK);
+
+    }
 }

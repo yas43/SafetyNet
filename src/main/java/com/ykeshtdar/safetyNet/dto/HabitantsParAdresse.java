@@ -1,9 +1,11 @@
 package com.ykeshtdar.safetyNet.dto;
 
+import org.springframework.stereotype.*;
+
 import java.util.*;
 
 
-// this class corresponding to "http://localhost:8080/fire?address=<address>"
+@Component
 public class HabitantsParAdresse {
     private String firsName;
     private String phone;

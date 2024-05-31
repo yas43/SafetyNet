@@ -15,6 +15,16 @@ public class EnfantsHabitantsLesAddress {
     private int age;
     private List<Person> personList;
 
+    public EnfantsHabitantsLesAddress(String name, String familyName, int age, List<Person> personList) {
+        this.name = name;
+        this.familyName = familyName;
+        this.age = age;
+        this.personList = personList;
+    }
+
+    public EnfantsHabitantsLesAddress() {
+    }
+
     public String getName() {
         return name;
     }

@@ -105,7 +105,7 @@ public class SafetynetService {
         return enfantsHabitantsLesAddressList;
     }
 
-    private boolean isKid(JsonNode jsonNode) {
+    public boolean isKid(JsonNode jsonNode) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("\"MM/dd/yyyy\"", Locale.ENGLISH);
         LocalDate currentDate = LocalDate.now();
@@ -127,7 +127,7 @@ public class SafetynetService {
 
     }
 
-    private int age(JsonNode jsonNode) {
+    public int age(JsonNode jsonNode) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("\"MM/dd/yyyy\"", Locale.ENGLISH);
         LocalDate currentDate = LocalDate.now();
         LocalDate personBirthdate = LocalDate.parse(jsonNode.path("birthdate").toString(), formatter);

@@ -12,6 +12,17 @@ public class PersonInfo {
     private String email;
     private List<String> medicationhistory;
 
+    public PersonInfo(String firstName, String address, int age, String email, List<String> medicationhistory) {
+        this.firstName = firstName;
+        this.address = address;
+        this.age = age;
+        this.email = email;
+        this.medicationhistory = medicationhistory;
+    }
+
+    public PersonInfo() {
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -61,5 +72,18 @@ public class PersonInfo {
                 ", email='" + email + '\'' +
                 ", medicationhistory=" + medicationhistory +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonInfo that = (PersonInfo) o;
+        return age == that.age && Objects.equals(firstName, that.firstName) && Objects.equals(address, that.address) && Objects.equals(email, that.email) && Objects.equals(medicationhistory, that.medicationhistory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, address, age, email, medicationhistory);
     }
 }

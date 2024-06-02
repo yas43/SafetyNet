@@ -1,0 +1,26 @@
+2024-06-02T13:17:35.006+02:00  INFO 1026 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Starting SafetyNetApplication using Java 21.0.2 with PID 1026 (/Users/ykeshtdar/IdeaProjects/safetyNet/target/classes started by ykeshtdar in /Users/ykeshtdar/IdeaProjects/safetyNet)
+2024-06-02T13:17:35.013+02:00 DEBUG 1026 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Running with Spring Boot v3.2.7-SNAPSHOT, Spring v6.1.8
+2024-06-02T13:17:35.014+02:00  INFO 1026 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : No active profile set, falling back to 1 default profile: "default"
+2024-06-02T13:17:36.122+02:00 DEBUG 1026 --- [safetyNet] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-02T13:17:36.123+02:00 DEBUG 1026 --- [safetyNet] [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2024-06-02T13:17:36.223+02:00 DEBUG 1026 --- [safetyNet] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 18 mappings in 'requestMappingHandlerMapping'
+2024-06-02T13:17:36.266+02:00 DEBUG 1026 --- [safetyNet] [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-06-02T13:17:36.287+02:00 DEBUG 1026 --- [safetyNet] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-02T13:17:36.307+02:00 DEBUG 1026 --- [safetyNet] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-02T13:17:36.616+02:00  INFO 1026 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Started SafetyNetApplication in 1.919 seconds (process running for 7.729)
+2024-06-02T13:18:16.217+02:00  INFO 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2024-06-02T13:18:16.217+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected StandardServletMultipartResolver
+2024-06-02T13:18:16.217+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected AcceptHeaderLocaleResolver
+2024-06-02T13:18:16.218+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected FixedThemeResolver
+2024-06-02T13:18:16.218+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@158d382a
+2024-06-02T13:18:16.219+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4bdd9d44
+2024-06-02T13:18:16.219+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-02T13:18:16.220+02:00  INFO 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2024-06-02T13:18:16.233+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /personInfo?firstName=John&lastName=Boyd]
+2024-06-02T13:18:16.235+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : GET "/personInfo?firstName=John&lastName=Boyd", parameters={masked}
+2024-06-02T13:18:16.239+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ykeshtdar.safetyNet.controller.SafteyNetController#personInfo(String, String)
+2024-06-02T13:18:16.250+02:00  INFO 1026 --- [safetyNet] [http-nio-8080-exec-2] c.y.s.c.SafteyNetController              : request for have info for a person 
+2024-06-02T13:18:16.311+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-02T13:18:16.313+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[PersonInfo{firstName='"John"', address='"1509 Culver St"', age=40, email='"jaboyd@email.com"', medi (truncated)...]
+2024-06-02T13:18:16.332+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2024-06-02T13:18:16.333+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA: GET /personInfo?firstName=John&lastName=Boyd]

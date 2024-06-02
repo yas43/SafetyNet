@@ -1,6 +1,7 @@
 package com.ykeshtdar.safetyNet.service;
 import com.ykeshtdar.safetyNet.model.*;
 import com.ykeshtdar.safetyNet.repository.Repository;
+import org.apache.logging.log4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import java.io.*;
@@ -9,12 +10,20 @@ import java.util.*;
 @Service
 public class PersonService {
 
+    private static final Logger logger = LogManager.getLogger(PersonService.class);
+
     @Autowired
     Repository repository;
 
-    public List<Person> postPersontolist(Person person) throws IOException {
+    public List<Person> postPersontolist(Person person)  {
 
-        List<Person>  personList = repository.pesonRepo();
+        List<Person>  personList = null;
+        try {
+            personList = repository.pesonRepo();
+        } catch (IOException e) {
+            logger.error("can not add given person to the list of person");
+            throw new RuntimeException(e);
+        }
         personList.add(person);
 
         return personList;
@@ -23,8 +32,14 @@ public class PersonService {
     }
 
 
-    public List<Person> updatrPerson(Person person) throws IOException {
-        List<Person> personList = repository.pesonRepo();
+    public List<Person> updatrPerson(Person person)  {
+        List<Person> personList = null;
+        try {
+            personList = repository.pesonRepo();
+        } catch (IOException e) {
+            logger.error("can not update given person to the list of person");
+            throw new RuntimeException(e);
+        }
 
         for (Person value : personList) {
 
@@ -70,8 +85,14 @@ public class PersonService {
     }
 
 
-    public List<Person> deletPerson(Person person) throws IOException {
-        List<Person> personList = repository.pesonRepo();
+    public List<Person> deletPerson(Person person)  {
+        List<Person> personList = null;
+        try {
+            personList = repository.pesonRepo();
+        } catch (IOException e) {
+            logger.error("can not delete given person from the list of person");
+            throw new RuntimeException(e);
+        }
         for (int i = 0; i < personList.size(); i++) {
 
             if (personList.get(i).getFirstName().replace("\"", "").equalsIgnoreCase(person.getFirstName())

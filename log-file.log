@@ -24,3 +24,13 @@
 2024-06-02T13:18:16.313+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[PersonInfo{firstName='"John"', address='"1509 Culver St"', age=40, email='"jaboyd@email.com"', medi (truncated)...]
 2024-06-02T13:18:16.332+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 200 OK
 2024-06-02T13:18:16.333+02:00 DEBUG 1026 --- [safetyNet] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA: GET /personInfo?firstName=John&lastName=Boyd]
+2024-06-02T14:54:05.520+02:00  INFO 819 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Starting SafetyNetApplication using Java 21.0.2 with PID 819 (/Users/ykeshtdar/IdeaProjects/safetyNet/target/classes started by ykeshtdar in /Users/ykeshtdar/IdeaProjects/safetyNet)
+2024-06-02T14:54:05.526+02:00 DEBUG 819 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Running with Spring Boot v3.2.7-SNAPSHOT, Spring v6.1.8
+2024-06-02T14:54:05.527+02:00  INFO 819 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : No active profile set, falling back to 1 default profile: "default"
+2024-06-02T14:54:06.657+02:00 DEBUG 819 --- [safetyNet] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-06-02T14:54:06.658+02:00 DEBUG 819 --- [safetyNet] [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2024-06-02T14:54:06.769+02:00 DEBUG 819 --- [safetyNet] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 18 mappings in 'requestMappingHandlerMapping'
+2024-06-02T14:54:06.817+02:00 DEBUG 819 --- [safetyNet] [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-06-02T14:54:06.839+02:00 DEBUG 819 --- [safetyNet] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-02T14:54:06.864+02:00 DEBUG 819 --- [safetyNet] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-02T14:54:07.197+02:00  INFO 819 --- [safetyNet] [main] c.y.s.SafetyNetApplication               : Started SafetyNetApplication in 1.987 seconds (process running for 7.793)

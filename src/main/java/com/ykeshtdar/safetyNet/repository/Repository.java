@@ -11,7 +11,6 @@ import java.util.*;
 
 @org.springframework.stereotype.Repository
 public class Repository {
-    //    JsonReaderFile jsonReaderFile = new JsonReaderFile();
     @Autowired
     GetJsonNode getJsonNode;
 

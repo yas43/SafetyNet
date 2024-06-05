@@ -11,6 +11,9 @@ import org.springframework.boot.test.context.*;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.*;
+import org.springframework.test.web.servlet.result.*;
+
 import java.util.Arrays;
 import java.util.List;
 import static org.mockito.Mockito.when;
@@ -72,7 +75,7 @@ public class FirestationControllerTest {
     }
 
     @Test
-    public void deleteFirestationShouldReturnNoContent() throws Exception{
+    public void deleteFirestationShouldReturnContent() throws Exception{
         when(firestationService.deleteFireStations(firstFirestation)).thenReturn(firestationList);
         mvc.perform(delete("/firestation")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -80,5 +83,8 @@ public class FirestationControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+
+
 
 }

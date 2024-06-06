@@ -11,8 +11,14 @@ import java.util.*;
 
 @org.springframework.stereotype.Repository
 public class Repository {
-    @Autowired
-    GetJsonNode getJsonNode;
+//    @Autowired
+//    GetJsonNode getJsonNode;
+
+    private final GetJsonNode getJsonNode;
+
+    public Repository(GetJsonNode getJsonNode) {
+        this.getJsonNode = getJsonNode;
+    }
 
     public List<Person> pesonRepo() throws IOException {
 

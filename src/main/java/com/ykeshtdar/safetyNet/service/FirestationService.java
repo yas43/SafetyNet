@@ -11,9 +11,13 @@ import java.util.*;
 public class FirestationService {
 
     private static final Logger logger = LogManager.getLogger(FirestationService.class);
-    @Autowired
-    Repository repository;
+//    @Autowired
+//    Repository repository;
+    private final Repository repository;
 
+    public FirestationService(Repository repository) {
+        this.repository = repository;
+    }
 
 
     public List<Firestations> addFireStation(Firestations firestations)  {

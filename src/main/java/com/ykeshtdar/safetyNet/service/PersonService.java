@@ -12,8 +12,16 @@ public class PersonService {
 
     private static final Logger logger = LogManager.getLogger(PersonService.class);
 
-    @Autowired
-    Repository repository;
+//    @Autowired
+//    Repository repository;
+
+    private final Repository repository;
+
+    public PersonService(Repository repository) {
+        this.repository = repository;
+    }
+
+
 
     public List<Person> postPersontolist(Person person)  {
 

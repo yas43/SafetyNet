@@ -14,8 +14,13 @@ public class MedicalrecordService {
 
     private static final Logger logger = LogManager.getLogger(MedicalrecordService.class);
 
-    @Autowired
-    Repository repository;
+//    @Autowired
+//    Repository repository;
+    private final Repository repository;
+
+    public MedicalrecordService(Repository repository) {
+        this.repository = repository;
+    }
 
 
     public List<Medicalrecords> addMedicalRecords(Medicalrecords medicalrecords)  {

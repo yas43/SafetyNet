@@ -2,6 +2,7 @@ package com.ykeshtdar.safetyNet.controller;
 import com.ykeshtdar.safetyNet.model.*;
 import com.ykeshtdar.safetyNet.service.*;
 import org.apache.logging.log4j.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
@@ -15,7 +16,7 @@ public class FirestationController {
 
 
     private final FirestationService firestationService;
-
+@Autowired
     public FirestationController(FirestationService firestationService) {
         this.firestationService = firestationService;
     }
